@@ -2,8 +2,9 @@
 
 Esf is the easiest way to load and save arrays onto files, made for beginners!
 
-Esf makes a great alternative to other file formatting engines, such as JSON or PyYaml. Its functions are really simple,
-made so even the newest of programmers can understand it without digging deep in stackoverflow :P
+Esf makes a great alternative to other file formatting engines, such as JSON or PyYaml 
+###and SQL haha. 
+Its functions are really simple, made so even the newest of programmers can understand it without digging deep in stackoverflow :P
 
 Esf makes it as simple as providing a file path for your file to be stored, and naming the file (remember to end it with a .esf format)
 also remember to use forward slashes when typing in your directory (Backward slashes wont work, so copying and pasting the directory of your choice wont work unless you change all the backward slashes to forward slashes)
