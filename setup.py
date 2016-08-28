@@ -31,8 +31,8 @@ setup(
 
     keywords=['files', 'saving', 'arrays'],
 
-    py_modules=["esf"],
+    py_modules=['esf'],
 
-    install_requires=[''],
+    install_requires=['requests'],
 
 )
