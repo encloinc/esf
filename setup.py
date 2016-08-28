@@ -33,6 +33,6 @@ setup(
 
     py_modules=['esf'],
 
-    install_requires=['requests'],
+    install_requires=['peppercorn'],
 
 )
