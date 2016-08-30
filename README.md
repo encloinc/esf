@@ -8,11 +8,11 @@ made so even the newest of programmers can understand it without digging deep in
 Esf makes it as simple as providing a file path for your file to be stored, and naming the file (remember to end it with a .esf format)
 also remember to use forward slashes when typing in your directory (Backward slashes wont work, so copying and pasting the directory of your choice wont work unless you change all the backward slashes to forward slashes)
 
-also dont put your file in the filepath, add your file name on the second arguent of the functions class
+also dont put your file in the filepath, add your file name on the second arguent of the EasySaveFunctions class
 ###Getting started with ESF###
 ```python
 import esf
-f = functions('C:/Users/your/file/path', 'test.esf')
+f = EasySaveFunctions('C:/Users/your/file/path', 'test.esf')
 ```
 ###Now you can get started with ESF!###
 
@@ -51,7 +51,7 @@ list = f.get_list()
 f.upload_list(list)
 ```
 
-####Delete you file (Create a new function session after doing this)####
+####Delete you file (Create a new EasySaveFunctions session after doing this)####
 ```Python
 f.delete()
 ```
