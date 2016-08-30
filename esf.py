@@ -5,10 +5,9 @@
 #   /_____/ /____//_/
 #                       The easiest way to save arrays on a file, saved on a .ESF format (;
 import os
-import shutil
 import engine
 
-class functions:
+class EasySaveFunctions:
     def __init__(self, filepath, name):
         self.file_path_ = filepath
         self.name_ = name
@@ -88,7 +87,7 @@ class functions:
                 f = open(self.directory_, 'w')
                 f.close()
             else:
-                shutil.rmtree(self.directory_)
+                os.remove(self.directory_)
     def get_list(self):
         if check_format(self.directory_) == 'True':
             if not os.path.exists(self.directory_):
