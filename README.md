@@ -2,6 +2,11 @@
 
 Esf is the easiest way to load and save arrays onto files, made for beginners!
 
+###Installing ESF###
+```console
+pip install esf or py -3.5 -m pip install esf
+```
+
 Esf makes a great alternative to other file formatting engines, such as JSON or PyYaml. Its functions are really simple,
 made so even the newest of programmers can understand it without digging deep in stackoverflow :P
 
