@@ -1,9 +1,18 @@
+
 from slacker import Slacker
 import time
 import websocket as websockets
 import json
 import sys
 import math
+
+def g_parse(string)
+    list = []
+    for i in string
+        list.append(string[i])
+    list.pop(0)
+    list.pop(0)
+    return ''.join(list)
 
 def check_format(string):
     allowed = ['0','1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '^', '%', '/', '+', '-', '.', ' ']
@@ -200,9 +209,9 @@ while True:
         happiness = 10
     questions = ["Hi Ubi!", "Whats up Ubi?", "Ubi how are you feeling?", "Ubi are you hungry?", "-feed ubi",
                  "Ubi I am your father", "Ubi I am your grandfather", "Ubi Spam", "Ubi I am your grunkle",
-                 "Ubi whats your source code", "Ubi whats the answer to"]
+                 "Ubi whats your source code", "Ubi whats the answer to", "Ubi can you host a game of math wars"]
     responses = ["Hello There!", 'The Sky :3', emotions[happiness - 1], hunger_reply, other_hunger_reply,
-                 father, grandfather, "Who do you think I am... Enclo-Jr?", uncle, 'This is', calc_response]
+                 father, grandfather, "Who do you think I am... Enclo-Jr?", uncle, 'This is', calc_response, "Game Ended"]
     events = websocket.recv()
     events = json.loads(events)
     time_since_1970 = time.time()
@@ -319,6 +328,66 @@ while True:
             elif original[0] == False:
                 print("2")
                 calc_response = 'I would tell you, but thats in the wrong format'
+        if events['test'] == "Ubi can you host a game of math wars":
+            try:
+                game_host = username
+                org = events['channel']
+                ubi.chat.post_message(org, "Game of Math Wars starting", as_user=True)
+                ubi.chat.post_message(org, "_*How To Play*_", as_user=True)
+                ubi.chat.post_message(org, "_Math wars consists of 10 math questions that will be asked
+                on this channel, you will have between 30 seconds to 5 minutes to solve each problem, depending on the 
+                complexity of the problem, the first user to get the question right gets a point. These questions all follow the
+                order of operations, or PEMDAS. To submit your answer, type ~ symbol followed by a space and then your answer_", as_user=True)
+                ubi.chat.post_message(org, "_*Example for when I ask what's 2 + 2", as_user=True*_)
+                ubi.chat.post_message(org, 'You would answer, remove the quotes "~ 4", and you would receive the point', as_user=True)
+                ubi.chat.post_message(org, "*Please be fair to your fellow teammates and don't use other calculators to solve these problems*", as_user=True)
+                ubi.chat.post_message(org, "I will be unable to answer questions unrelated to the game until the game finishes, game starting in 60 seconds..._", as_user=True)
+                time.sleep(15)
+                ubi.chat.post_message(org, "_45 seconds_", as_user=True)
+                time.sleep(15)
+                ubi.chat.post_message(org, "_30 seconds_", as_user=True)
+                time.sleep(15)
+                ubi.chat.post_message(org, "_15 seconds_", as_user=True)
+                time.sleep(12)
+                i = 0
+                while i != 3:
+                    ubi.chat.post_message(org,"_" + str(3 - i) + "seconds_", as_user=True)
+                    i += 1
+                    time.sleep(1)
+                ubi.chat.post_message(org, "Welcome to Math Wars!!!", as_user=True)
+                time.sleep(1)
+                ubi.chat.post_message(org, "V.1, without further ado, let's begin", as_user=True)
+                time.sleep(1)
+                ubi.chat.post_message(org, "*Host please choose the amount of turns (max 20) this game will use -30 seconds to choose- (use the same command ~ as I explained in the beginning of the game)*", as_user=True)
+                end = 'false'
+                time_since_1970 = time.time()
+                time_since_2000 = math.floor(time_since_1970 + 60 * 60 * 24 * 365 * 30)
+                original = time_since_2000
+                turns = 'NAN':
+                while end == 'false'
+                    time_since_1970 = time.time()
+                    time_since_2000 = math.floor(time_since_1970 + 60 * 60 * 24 * 365 * 30)
+                    events = websocket.recv()
+                    events = json.loads(events)
+                    if not original + 60 < time_since_2000
+                        if events['type'] == 'message' and 'type' in events:
+                            if events['user'] == game_host and events['text'][0] == '~' and events['text'][1] == ' ' and len(events['text']) > 2:
+                                turns = g_parse(events['text'])
+                               ubi.chat.post_message(org, 'Turns successfully set to ' + str(turns) as_user=True)
+                                	end = 'true'
+                    else:
+                        end = 'true'
+                if turns != 'NAN'
+                    game_ended = False
+                    i = 0
+                    while game_ended == False:
+                        Question = form_random_Q()
+                        ubi.chat.post_message(org, 'You have ' + str(Question[0]) + ' seconds to respond to the following question worth ' + str(Question[1]) + ' point')
+                        
+                else:
+                    game_end_reply = 'Game ended because host failed to respond with a turn value'
+                    
+                    
         if events['text'] == "Ubi whats your source code":
             ubi.files.upload(file_="ubiNova.py", content="Source Code", filetype="python", filename= "Source Code",
                              channels="#fn-general")
@@ -326,9 +395,9 @@ while True:
         try:
             questions = ["Hi Ubi!", "Whats up Ubi?", "Ubi how are you feeling?", "Ubi are you hungry?", "-feed ubi",
                          "Ubi I am your father", "Ubi I am your grandfather", "Ubi Spam", "Ubi I am your grunkle",
-                         "Ubi whats your source code", "Ubi whats the answer to"]
+                         "Ubi whats your source code", "Ubi whats the answer to", "Ubi can you host a game of math wars,"]
             responses = ["Hello There!", 'The Sky :3', emotions[happiness - 1], hunger_reply, other_hunger_reply,
-                         father, grandfather, "Who do you think I am... Enclo-Jr?", uncle, "This Is", calc_response]
+                         father, grandfather, "Who do you think I am... Enclo-Jr?", uncle, "This Is", calc_response, "Game Ended"]
             ubi.chat.post_message(events["channel"], responses[index], as_user=True)
         except Exception as e:
             print(e)
